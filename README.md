@@ -4,5 +4,5 @@
 
 
 <p align="center">
-  <img src="Images/MainImage.png"/>
+  <img src="Images/MainImage.png">
 </p>
