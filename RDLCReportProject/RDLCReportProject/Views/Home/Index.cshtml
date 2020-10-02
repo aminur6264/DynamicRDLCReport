@@ -1,0 +1,136 @@
+﻿@model RDLCReportProject.ViewModel.FilterViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Report", "Home", FormMethod.Post, new { target = "_blank" }))
+{
+    <div class="row well" style="margin-top: 30px;">
+        <div class="">
+            <div class="col-sm-3">
+                <select class="form-control" name="gender" id="Genders">
+                    <option value="">Select Gender</option>
+                    @{
+                        foreach (string gender in Model.Genders)
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="col-sm-3">
+                <select class="form-control" name="religion" id="Religion">
+                    <option value="">Select Religion</option>
+                    @{
+                        foreach (string gender in Model.Religion)
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <select class="form-control" id="Designations" name="designations">
+                    <option value="">Select Designations</option>
+                    @{
+                        foreach (string gender in Model.Designations)
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <select class="form-control" id="BloodGroups" name="bloodGroup">
+                    <option value="">Select BloodGroup</option>
+                    @{
+                        foreach (string gender in Model.BloodGroups)
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="well">
+            @{
+                foreach (string column in Model.ColumnNames)
+                {
+                    <label class="btn btn-default">
+                        <input type="checkbox" name="columns" class="colunmNames" onclick="" value="@column" />
+                        <label for="@column"></label>
+                        @column
+                    </label>
+                }
+            }
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-sm-4 col-sm-offset-4">
+            <button type="button" class="btn btn-primary btn-block" id="" onclick="ShowReportHandler()">Show Report</button>
+            <button type="submit" class="btn btn-primary btn-block">Download</button>
+        </div>
+    </div>
+}
+<div class="row" style="margin-top: 20px;" id="reportShow">
+
+</div>
+
+
+
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function() {
+            $('#btnShowReport').on('click',
+                function() {
+                  
+                });
+        });
+
+        
+
+        function ShowReportHandler() {
+            console.log('clicked');
+
+            var selected = new Array();
+
+            var colData = '';
+
+            $('.colunmNames').each(function () {
+                if ($(this).is(":checked")) {
+                    selected.push($(this).val());
+                    colData += $(this).val() + ',';
+                }
+            });
+            colData = colData.replace(/,\s*$/, "");
+
+            console.log(selected);
+
+
+            $.ajax({
+                url: '@Url.Action("PDF")',
+                type: 'GET',
+                data: { column: colData ,gender: $('#Genders').val(), religion: $('#Religion').val(), designations: $('#Designations').val(), bloodGroup: $('#BloodGroups').val() },
+                dataType: 'HTML',
+                //contentType: "application/xml; charset=utf-8",
+                success: function(data) {
+                    //alert($("reportShow").width());
+                    console.log(data);
+                    $('#reportShow').html(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+}

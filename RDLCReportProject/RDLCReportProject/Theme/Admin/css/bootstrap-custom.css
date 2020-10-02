@@ -1,0 +1,68 @@
+﻿.form-control {
+    border-radius: 0px;
+}
+
+/*input[type=text], input[type=email], select {
+    font-size: 12px;
+    height: 25px;
+}*/
+.small-textbox {
+    font-size: 12px;
+    height: 25px;
+}
+.dropdown-forms {
+    font-size: 11px;
+    height: 25px;
+    padding: 0px;
+}
+.font-12 {
+    font-size: 12px;
+}
+.font-11 {
+    font-size: 11px;
+}
+.btn-font-10 {
+    font-size: 11px;
+}
+textarea {
+    font-size: 12px;
+}
+
+.table-button {
+    height: 23px;
+}
+
+.table-button i {
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.btn-delete {
+    color: red;
+}
+.btn {
+    border-radius: 0px;
+}
+
+.panel-primary {
+    border: 1px solid #428bca;
+}
+.box-shadow {
+    /*box-shadow: 5px 5px 5px 5px;*/
+    box-shadow: 5px 12px 12px 12px;
+    border-radius: 0px;
+}
+.panel {
+    border-radius: 0px 0px 0px 0px;
+}
+.panel-heading {
+    border-radius: 0px 0px 0px 0px;
+}
+.panel-body {
+    border-radius: 0px 0px 0px 0px;
+}
+
+.table-text-middle tbody tr td{
+    vertical-align: middle;
+}
