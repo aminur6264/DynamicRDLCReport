@@ -1,6 +1,3 @@
-
-<<<<<<< HEAD
-  # Dynamic RDLC Report
-=======
-#Dynamic RDLC Report
->>>>>>> b40d3d4849adddc2b09b003c1993bde2b4560f78
+<p align="center">
+  <h1>Dynamic RDLC Report</h1>
+</p>
